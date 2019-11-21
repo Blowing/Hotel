@@ -1,17 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@mipmap/bg_map"
+    tools:context=".ui.MainActivity">
 
-    <TextView
+    <com.amap.api.maps.MapView
+        android:id="@+id/map_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+
+    <ImageView
+        android:id="@+id/main_iv_set"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:src="@mipmap/ic_set"/>
+
+
+    <LinearLayout
+        android:id="@+id/main_rv_select_time"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/main_iv_set"
+        android:paddingLeft="@dimen/padding_left_and_right"
+        android:paddingRight="@dimen/padding_left_and_right"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="@dimen/padding_left_and_right"
+        android:layout_marginRight="@dimen/padding_left_and_right"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_corner_3">
+
+        
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@mipmap/ic_timer"/>
+
+        <TextView
+            android:id="@+id/main_tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_20"
+            android:textColor="@color/black"
+            android:paddingLeft="14dp"
+            tools:text="北京"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="14dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="24dp"
+                android:textSize="@dimen/text_size_20"
+                android:textColor="@color/black"
+                android:text="何时入住？"/>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_arrow_down" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_above="@id/main_lv_action"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="@dimen/padding_left_and_right"
+        android:background="@drawable/bg_circle_white">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerInParent="true"
+            android:src="@mipmap/ic_location"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/main_lv_action"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="52dp"
+        android:layout_marginLeft="52dp"
+        android:background="@drawable/bg_corner_5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+
+        <RelativeLayout
+            android:id="@+id/main_rv_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16"
+                android:drawableLeft="@mipmap/ic_list"
+                android:drawablePadding="5dp"
+                android:text="列表"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="16dp"
+            android:background="@color/black"/>
+        <RelativeLayout
+            android:id="@+id/main_rv_splash_order"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_size_16"
+                android:drawableLeft="@mipmap/ic_flash"
+                android:drawablePadding="5dp"
+                android:text="快速订房"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
