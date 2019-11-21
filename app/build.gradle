@@ -2,18 +2,35 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    signingConfigs {
+        hotel {
+            keyAlias 'jianxi'
+            keyPassword 'jianxi'
+            storeFile file('../jianxi.jks')
+            storePassword 'jianxi'
+
+        }
+    }
     defaultConfig {
         applicationId "com.blowing.hotel"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.hotel
+
+        ndk { abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "x86","arm64-v8a","x86_64" }
     }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.hotel
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.hotel
         }
     }
 }
@@ -22,7 +39,9 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.amap.api:3dmap:7.1.0'
+    implementation 'com.amap.api:map2d:6.0.0'
+    implementation 'com.amap.api:navi-3dmap:7.1.0_3dmap7.1.0'
+    implementation 'com.amap.api:search:7.1.0'
+    implementation 'com.amap.api:location:4.7.2'
 }
