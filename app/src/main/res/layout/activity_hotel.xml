@@ -1,7 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HotelActivity"></android.support.constraint.ConstraintLayout>
+
+    tools:context=".ui.HotelActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        <android.support.v4.view.ViewPager
+            android:id="@+id/hotel_vp_bg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+        
+        <com.amap.api.maps.MapView
+            android:id="@+id/hotel_map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"/>
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+
+            <ImageView
+                android:id="@+id/hotel_iv_close"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginRight="14dp"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ic_closed"/>
+
+        <eightbitlab.com.blurview.BlurView
+            android:layout_below="@+id/hotel_iv_close"
+            android:layout_width="40dp"
+            android:layout_height="126dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+                <LinearLayout
+                    android:id="@+id/hotel_lv_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/hotel_iv_picture"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/ic_pictures"/>
+
+                    <ProgressBar
+                        android:id="@+id/hotel_seekbar_picturs"
+                        style="@android:style/Widget.ProgressBar.Horizontal"
+                        android:layout_width="24dp"
+                        android:layout_height="4dp"
+                        android:progress="33"
+                        android:max="100"
+                        android:layout_marginTop="4dp"
+                        android:progressDrawable="@drawable/bg_seekbar" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/hotel_rv_map"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/ic_map"/>
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/hotel_rv_tip"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/ic_tip"/>
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </eightbitlab.com.blurview.BlurView>
+
+
+        
+        
+    </RelativeLayout>
+    
+    
+    
+</FrameLayout>
