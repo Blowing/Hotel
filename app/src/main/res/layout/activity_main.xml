@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bg_map"
     tools:context=".ui.MainActivity">
 
     <com.amap.api.maps.MapView
@@ -75,13 +74,15 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/main_rv_location"
         android:layout_width="42dp"
         android:layout_height="42dp"
         android:layout_above="@id/main_lv_action"
         android:layout_alignParentRight="true"
         android:layout_marginBottom="32dp"
         android:layout_marginRight="@dimen/padding_left_and_right"
-        android:background="@drawable/bg_circle_white">
+        android:background="@drawable/bg_circle_white"
+        android:visibility="visible">
 
         <ImageView
             android:layout_width="20dp"
