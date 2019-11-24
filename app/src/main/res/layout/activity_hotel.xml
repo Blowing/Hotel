@@ -4,51 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:background="@mipmap/bg_1"
     tools:context=".ui.HotelActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
+
         <android.support.v4.view.ViewPager
             android:id="@+id/hotel_vp_bg"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        
+            android:layout_height="match_parent" />
+
         <com.amap.api.maps.MapView
             android:id="@+id/hotel_map"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </RelativeLayout>
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        
 
-            <ImageView
-                android:id="@+id/hotel_iv_close"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="26dp"
-                android:layout_marginRight="14dp"
-                android:layout_alignParentRight="true"
-                android:src="@mipmap/ic_closed"/>
+        <ImageView
+            android:id="@+id/hotel_iv_close"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="26dp"
+            android:layout_marginRight="14dp"
+            android:src="@mipmap/ic_closed" />
 
         <eightbitlab.com.blurview.BlurView
-            android:layout_below="@+id/hotel_iv_close"
             android:layout_width="40dp"
             android:layout_height="126dp"
+            android:layout_below="@+id/hotel_iv_close"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="10dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
+
                 <LinearLayout
                     android:id="@+id/hotel_lv_picture"
                     android:layout_width="match_parent"
@@ -61,16 +61,16 @@
                         android:id="@+id/hotel_iv_picture"
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:src="@mipmap/ic_pictures"/>
+                        android:src="@mipmap/ic_pictures" />
 
                     <ProgressBar
                         android:id="@+id/hotel_seekbar_picturs"
                         style="@android:style/Widget.ProgressBar.Horizontal"
                         android:layout_width="24dp"
                         android:layout_height="4dp"
-                        android:progress="33"
-                        android:max="100"
                         android:layout_marginTop="4dp"
+                        android:max="100"
+                        android:progress="33"
                         android:progressDrawable="@drawable/bg_seekbar" />
                 </LinearLayout>
 
@@ -84,10 +84,8 @@
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:src="@mipmap/ic_map"/>
-
+                        android:src="@mipmap/ic_map" />
                 </RelativeLayout>
-
 
                 <RelativeLayout
                     android:id="@+id/hotel_rv_tip"
@@ -99,20 +97,144 @@
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:src="@mipmap/ic_tip"/>
-
+                        android:src="@mipmap/ic_tip" />
                 </RelativeLayout>
-
-
             </LinearLayout>
-
         </eightbitlab.com.blurview.BlurView>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/padding_left_and_right"
+            android:paddingRight="@dimen/padding_left_and_right">
 
-        
-        
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="维也纳国际酒店(广安门店)"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <eightbitlab.com.blurview.BlurView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_left_and_right">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@mipmap/ic_timer" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingLeft="22dp">
+
+                        <TextView
+                            android:id="@+id/hotel_tv_time_select"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="入住时间"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/text_size_16"
+                            android:visibility="visible" />
+
+                        <RelativeLayout
+                            android:id="@+id/hotel_rv_show_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone">
+
+                            <TextView
+                                android:id="@+id/hotel_tv_show_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="今天 18:00 2小时"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_14" />
+
+                            <TextView
+                                android:id="@+id/hotel_tv_show_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/hotel_tv_show_time"
+                                android:text="2019/11/25"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/text_size_12" />
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:src="@mipmap/ic_arrow_down" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </eightbitlab.com.blurview.BlurView>
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/hotel_bv_time_ok"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_left_and_right"
+                android:visibility="gone">
+
+                <Button
+                    android:id="@+id/hotel_btn_time_ok"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@null"
+                    android:text="确定"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+            </eightbitlab.com.blurview.BlurView>
+
+            <LinearLayout
+                android:id="@+id/hotel_lv_select_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/padding_left_and_right"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <eightbitlab.com.blurview.BlurView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.v4.view.ViewPager
+                        android:id="@+id/hotel_vp_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
+                </eightbitlab.com.blurview.BlurView>
+
+                <eightbitlab.com.blurview.BlurView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <android.support.design.widget.TabLayout
+                        android:id="@+id/hotel_tab"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:tabBackground="@drawable/tab_selector"
+                        app:tabIndicatorHeight="0dp"
+                        app:tabMode="scrollable"
+                        app:tabGravity="fill"
+                        app:tabRippleColor="@android:color/transparent"
+                        app:tabTextColor="@color/white"
+                        app:tabSelectedTextColor="@color/black"/>
+                </eightbitlab.com.blurview.BlurView>
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
-    
-    
-    
 </FrameLayout>

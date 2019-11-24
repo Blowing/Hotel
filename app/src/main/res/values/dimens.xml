@@ -3,8 +3,12 @@
     <dimen name="corner_3dp">3dp</dimen>
     <dimen name="corner_5dp">5dp</dimen>
     <dimen name="padding_left_and_right">10dp</dimen>
+    <dimen name="btn_height">48dp</dimen>
+    <dimen name="padding_top">4dp</dimen>
 
     
     <dimen name="text_size_20">20sp</dimen>
     <dimen name="text_size_16">16sp</dimen>
+    <dimen name="text_size_14">14sp</dimen>
+    <dimen name="text_size_12">12sp</dimen>
 </resources>
