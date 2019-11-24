@@ -1,6 +1,7 @@
 package com.blowing.hotel.ui;
 
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -21,6 +22,7 @@ import com.amap.api.maps.model.MyLocationStyle;
 import com.blowing.hotel.R;
 import com.blowing.hotel.ui.adapter.HomeAdapter;
 import com.blowing.hotel.ui.adapter.PictureAdapeter;
+import com.eightbitlab.supportrenderscriptblur.SupportRenderScriptBlur;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,6 +44,13 @@ public class HotelActivity extends AppCompatActivity implements View.OnClickList
     private ViewPager homeViewPager;
     private TabLayout homeTableLayout;
 
+    private BlurView blurViewTop;
+    private BlurView blurViewSelectTime;
+    private BlurView blurViewOk;
+    private BlurView blurViewVp;
+    private BlurView blurViewTb;
+
+    private ViewGroup root;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,11 +63,62 @@ public class HotelActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void initView() {
+        root = findViewById(R.id.root);
         mViewPager = findViewById(R.id.hotel_vp_bg);
         mSeekBar = findViewById(R.id.hotel_seekbar_picturs);
         findViewById(R.id.hotel_lv_picture).setOnClickListener(this);
         findViewById(R.id.hotel_rv_map).setOnClickListener(this);
+        findViewById(R.id.hotel_iv_close).setOnClickListener(this);
+        initBlurView();
     }
+
+    private void initBlurView() {
+        blurViewTop = findViewById(R.id.blurview_top);
+        blurViewOk = findViewById(R.id.hotel_bv_time_ok);
+        blurViewSelectTime = findViewById(R.id.blurview_slectTime);
+        blurViewVp = findViewById(R.id.blurview_vp);
+        blurViewTb = findViewById(R.id.blurview_tb);
+
+
+        final float radius = 25f;
+        final float minBlurRadius = 10f;
+        final float step = 4f;
+
+        //set background, if your root layout doesn't have one
+        final Drawable windowBackground = getWindow().getDecorView().getBackground();
+
+        blurViewTop.setupWith(root)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurAlgorithm(new SupportRenderScriptBlur(this))
+                .setBlurRadius(radius)
+                .setHasFixedTransformationMatrix(true);
+
+        blurViewOk.setupWith(root)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurAlgorithm(new SupportRenderScriptBlur(this))
+                .setBlurRadius(radius)
+                .setHasFixedTransformationMatrix(true);
+
+        blurViewSelectTime.setupWith(root)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurAlgorithm(new SupportRenderScriptBlur(this))
+                .setBlurRadius(radius)
+                .setHasFixedTransformationMatrix(true);
+
+        blurViewVp.setupWith(root)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurAlgorithm(new SupportRenderScriptBlur(this))
+                .setBlurRadius(radius)
+                .setHasFixedTransformationMatrix(true);
+        blurViewTb.setupWith(root)
+                .setFrameClearDrawable(windowBackground)
+                .setBlurAlgorithm(new SupportRenderScriptBlur(this))
+                .setBlurRadius(radius)
+                .setHasFixedTransformationMatrix(true);
+
+
+    }
+
 
     private void initActionView() {
         timeSelectTv = findViewById(R.id.hotel_tv_time_select);
@@ -274,6 +334,9 @@ public class HotelActivity extends AppCompatActivity implements View.OnClickList
             case R.id.hotel_rv_map:
                 mMapView.setVisibility(View.VISIBLE);
                 mViewPager.setVisibility(View.GONE);
+                break;
+            case R.id.hotel_iv_close:
+                finish();
                 break;
         }
     }
